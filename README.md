@@ -1,1 +1,1 @@
-# Apollo
+# The New York Times Frontpage API
