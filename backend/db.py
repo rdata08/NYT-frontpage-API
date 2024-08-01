@@ -1,21 +1,17 @@
 import os
+from config import Config
 import subprocess
 import textwrap
 import mysql.connector
 
-NYTdata = subprocess.run(['python3', 'backend/app.py'], capture_output= True, text= True)
+NYTdata = subprocess.run(['python3', 'backend/script.py'], capture_output= True, text= True)
 data = textwrap.dedent(str(NYTdata.stdout.strip()))
 
-db_host = os.getenv("DB_HOST")
-db_user = os.getenv("DB_USER")
-db_password = os.getenv("DB_PASSWORD")
-db_database = os.getenv("DB_DATABASE")
-
 mydb = mysql.connector.connect(
-  host = db_host,
-  user = db_user,
-  password = db_password,
-  database = db_database 
+  host = Config.db_host,
+  user = Config.db_user,
+  password = Config.db_password,
+  database = Config.db_database 
 )
 
 mycursor = mydb.cursor()
