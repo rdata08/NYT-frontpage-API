@@ -33,15 +33,42 @@ class DatabaseDriver():
     finally:
       self.conn.close()
 
-  def getRandom(self) -> Optional[tuple]:
+  def getRandom(self) -> Optional[list]:
     try:
       cursor = self.conn.cursor()
-      cursor.execute("SELECT * FROM mytable LIMIT 1;")
-      result = cursor.fetchone()
-      return result 
+      cursor.execute("SELECT * FROM mytable LIMIT 4;")
+      results = cursor.fetchall()
+      return results
     except Exception as e:
       print("Get random element unsuccessful")
       print("Error", e)
       return None
     finally:
       self.conn.close()
+  
+  def getbyId(self, id) -> Optional[str]:
+    try:
+      cursor = self.conn.cursor()
+      cursor.execute(f"SELECT id FROM mytable WHERE id={id}")
+      result = cursor.fetchone()
+      return result
+    except Exception as e:
+      print("Get by id unsuccessful")
+      print("Error", e)
+    finally:
+      self.conn.close()
+
+  # Returns article by headline
+  def getbyHeadline(self, headline) -> Optional[str]:
+    try:
+      cursor = self.conn.cursor()
+      cursor.execute(f"SELECT headline FROM mytable WHERE headline={headline}")
+      result = cursor.fetchone()
+      return result
+    except Exception as e:
+      print("Get by headline unsuccessful")
+      print("Error", e)
+    finally:
+      self.conn.close()
+  
+      

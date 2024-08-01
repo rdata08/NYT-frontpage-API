@@ -1,6 +1,3 @@
-from flask import Flask
-from bs4 import BeautifulSoup
-import html2text
 import requests
 import tempfile
 import fitz
