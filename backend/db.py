@@ -17,13 +17,10 @@ class DatabaseDriver():
         print("Error", e)
         time.sleep(3)
   
-  def nytUpdate(self) -> None:
+  def insert(self, table, data, col) -> None:
     try:
-      NYTdata = subprocess.run(['python3', 'backend/script.py'], capture_output= True, text= True)
-      data = textwrap.dedent(str(NYTdata.stdout.strip()))
-  
       cursor = self.conn.cursor()
-      sql = "INSERT INTO mytable (address) VALUES (%s)"
+      sql = f"INSERT INTO {table} ({col}) VALUES (%s)"
       cursor.execute(sql, (data,))
       self.conn.commit()
       print("Data success")
@@ -32,6 +29,12 @@ class DatabaseDriver():
       print("Error", e)
     finally:
       self.conn.close()
+
+  def nytUpdate(self) -> None:
+    NYTdata = subprocess.run(['python3', 'backend/script.py'], capture_output= True, text= True)
+    data = textwrap.dedent(str(NYTdata.stdout.strip()))
+    
+    self.insert("mytable", data, "address")
 
   def getRandom(self) -> Optional[list]:
     try:
@@ -46,10 +49,12 @@ class DatabaseDriver():
     finally:
       self.conn.close()
   
+  # def retrieve(self, selector, )
+
   def getbyId(self, id) -> Optional[str]:
     try:
       cursor = self.conn.cursor()
-      cursor.execute(f"SELECT id FROM mytable WHERE id={id}")
+      cursor.execute(f"SELECT id FROM mytable WHERE id={id};")
       result = cursor.fetchone()
       return result
     except Exception as e:
@@ -59,10 +64,10 @@ class DatabaseDriver():
       self.conn.close()
 
   # Returns article by headline
-  def getbyHeadline(self, headline) -> Optional[str]:
+  def getArticlebyHeadline(self, headline) -> Optional[str]:
     try:
       cursor = self.conn.cursor()
-      cursor.execute(f"SELECT headline FROM mytable WHERE headline={headline}")
+      cursor.execute(f"SELECT article FROM mytable WHERE headline={headline};")
       result = cursor.fetchone()
       return result
     except Exception as e:
@@ -71,4 +76,18 @@ class DatabaseDriver():
     finally:
       self.conn.close()
   
+  # gets link to article title
+  def getLinkbyHeadline(self, headline) -> Optional[str]:
+    try:
+      cursor = self.conn.cursor()
+      cursor.execute(f"SELECT link FROM mytable WHERE headline={headline};")
+      result = cursor.fetchone()
+      return result
+    except Exception as e:
+      print("Get by headline unsuccessful")
+      print("Error", e)
+    finally:
+      self.conn.close()
+  
+
       
