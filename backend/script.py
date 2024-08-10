@@ -3,14 +3,6 @@ import tempfile
 import fitz
 import pycountry
 import re
-import names
-import nltk
-from nltk.corpus import names
-
-nltk.data.path.append('/Users/ryangomez/nltk_data')
-nltk.download('names', download_dir='/Users/ryangomez/nltk_data')
-male_names = names.words('male.txt')
-female_names = names.words('female.txt')
 
 url = 'https://static01.nyt.com/images/2024/07/29/nytfrontpage/scan.pdf'
 response = requests.get(url)
@@ -70,7 +62,7 @@ for match in matches:
         author_list = authors.split()
         final_authors = []
         for word in author_list:
-            if word in male_names or word in female_names or word.lower() == "and":
+            # condition:
                 final_authors.append(word)
         
         print(final_authors)
@@ -84,9 +76,5 @@ for match in matches:
 # matches = re.findall(pattern, full_text)
 # for match in matches:
 #     print(match)
-
-
-
-
 
 
