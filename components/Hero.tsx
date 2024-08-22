@@ -41,7 +41,6 @@ export default function Hero() {
                         position='right'
                         handleClick={changeToApiPage}
                     />
-
                 </div>
             </div>
         </div>
