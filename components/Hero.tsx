@@ -1,15 +1,18 @@
+"use client"
 import MagicButton from './ui/MagicButton'
 import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
 import { FaLock } from 'react-icons/fa6'
+import { useRouter } from '@/node_modules/next/navigation'
 
 export default function Hero() {
+    const router = useRouter();
 
-    const changeToApiPage = () => {
-        
-    }
+    const goToApiPage = () =>{
+        router.push("/api");
+    };
 
-    return(
+    return (
         <div className='pb-20 pt-36'>
             <div>
                 <Spotlight className='-top-40 -left-10
@@ -39,7 +42,7 @@ export default function Hero() {
                         title="Authorize"
                         icon={<FaLock />}
                         position='right'
-                        handleClick={changeToApiPage}
+                        handleClick={goToApiPage}
                     />
                 </div>
             </div>
