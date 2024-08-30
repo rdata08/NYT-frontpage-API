@@ -5,3 +5,4 @@ class Config:
     db_user = os.getenv("DB_USER")
     db_password = os.getenv("DB_PASSWORD")
     db_database = os.getenv("DB_DATABASE")
+    db_openaiapikey = os.getenv("OPENAI_API_KEY")

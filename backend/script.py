@@ -1,8 +1,26 @@
 import requests
 import tempfile
 import fitz
-import pycountry
 import re
+from backend.config import Config
+from openai import OpenAI
+
+client = OpenAI(
+    # This is the default and can be omitted
+    api_key= Config.db_openaiapikey
+)
+
+print("----- standard request -----")
+completion = client.chat.completions.create(
+    model="gpt-4",
+    messages=[
+        {
+            "role": "user",
+            "content": "Say this is a test",
+        },
+    ],
+)
+print(completion.choices[0].message.content)
 
 url = 'https://static01.nyt.com/images/2024/07/29/nytfrontpage/scan.pdf'
 response = requests.get(url)
