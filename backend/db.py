@@ -48,8 +48,6 @@ class DatabaseDriver():
       return None
     finally:
       self.conn.close()
-  
-  # def retrieve(self, selector, )
 
   def getbyId(self, id) -> Optional[str]:
     try:
