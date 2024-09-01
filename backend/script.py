@@ -2,25 +2,13 @@ import requests
 import tempfile
 import fitz
 import re
-from backend.config import Config
-from openai import OpenAI
+from config import Config
+import openai
 
-client = OpenAI(
-    # This is the default and can be omitted
-    api_key= Config.db_openaiapikey
+client = openai.OpenAI(
+    api_key=Config.AI_API_KEY,
+    base_url="https://api.aimlapi.com"
 )
-
-print("----- standard request -----")
-completion = client.chat.completions.create(
-    model="gpt-4",
-    messages=[
-        {
-            "role": "user",
-            "content": "Say this is a test",
-        },
-    ],
-)
-print(completion.choices[0].message.content)
 
 url = 'https://static01.nyt.com/images/2024/07/29/nytfrontpage/scan.pdf'
 response = requests.get(url)
@@ -71,6 +59,7 @@ pattern = r'^(.*?)(?: By (.+?) Continued on Page [A-Z]\d+| By (.+))$'
 
 matches = [re.match(pattern, line) for line in filtered_last_lines]
 
+final_authors = []
 # Print extracted headlines and authors
 for match in matches:
     if match:
@@ -78,17 +67,32 @@ for match in matches:
         authors = match.group(2).strip() if match.group(2) else match.group(3).strip()
 
         author_list = authors.split()
-        final_authors = []
+        
         for word in author_list:
             # condition:
                 final_authors.append(word)
-        
+
         print(final_authors)
         verifiedAuthors = ' '.join(final_authors)
 
         # print(f"Headline: {headline}")
         # print(f"Authors: {verifiedAuthors}")
-        print()
+
+system_content = ""
+user_content = f"What are the full names in this list: {final_authors}"
+
+chat_completion = client.chat.completions.create(
+    model="mistralai/Mistral-7B-Instruct-v0.2",
+    messages=[
+        {"role": "system", "content": system_content},
+        {"role": "user", "content": user_content},
+    ],
+    temperature=0.7,
+    max_tokens=128,
+)
+
+response = chat_completion.choices[0].message.content
+print("AI/ML API:\n", response)
 
 # pattern = r'\b[A-Z][A-Za-z\s]+(?:[A-Z][a-z]+)?\sBy\s[A-Z][A-Z]+\s(?:and\s[A-Z][A-Z]+)?'
 # matches = re.findall(pattern, full_text)
