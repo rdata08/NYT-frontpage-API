@@ -1,0 +1,6 @@
+requests==2.31.0
+pymupdf==1.22.5
+openai==0.28.0
+flask==2.3.3
+beautifulsoup4==4.12.2
+mysql-connector-python==8.0.33
