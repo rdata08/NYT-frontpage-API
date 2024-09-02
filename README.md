@@ -14,10 +14,12 @@ To run the current project:
 
 macOS/linux:
 > `python -m venv venv`
+
 > `source venv/bin/activate`
 
 Windows:
 > `python -m venv venv`
+
 > `.\venv\Scripts\activate`
 
 6. Run `pip install -r requirements.txt` in the terminal to install the necessary libraries.
