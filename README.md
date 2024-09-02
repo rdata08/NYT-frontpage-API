@@ -11,12 +11,15 @@ To run the current project:
 2. `cd` into the extracted directory.
 3. Run `npm install` in the terminal to install the Node.js dependencies.
 4. Create and enter your virtual environment to isolate Pyton dependencies:
+
 macOS/linux:
 > `python -m venv venv` and `source venv/bin/activate`(macOS/Linux)
 > `source venv/bin/activate`
+
 Windows:
 > `python -m venv venv`
 > `.\venv\Scripts\activate`
+
 6. Run `pip install -r requirements.txt` in the terminal to install the necessary libraries.
 7. Run `npm run dev` or `npm start` to launch the project.
 8. Open your web browser and navigate to "localhost:3000".
