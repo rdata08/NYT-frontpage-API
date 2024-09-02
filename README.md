@@ -8,7 +8,7 @@ This project was inspired by the importance of spreading reliable and trustworth
 To run the current project:
 
 1. Download the zip file and open on local machine
-2. Cd into the directory
+2. `cd` into the directory
 3. Run `npm install` in the terminal to download the node_modules folder
 4. Run `npm run dev` or `npm start` to launch the project
 5. Navigate to your local host on your web browser e.g. "localhost:3000"
