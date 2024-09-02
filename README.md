@@ -13,7 +13,7 @@ To run the current project:
 4. Create and enter your virtual environment to isolate Pyton dependencies:
 
 macOS/linux:
-> `python -m venv venv` and `source venv/bin/activate`(macOS/Linux)
+> `python -m venv venv`
 > `source venv/bin/activate`
 
 Windows:
