@@ -8,8 +8,8 @@ export default function ApiPage (){
     }
 
     return (
-        <div className='pb-20 pt-36'>
-            <h1>Api Page</h1>
+        <div className='flex justify-center relative my-20 z-10 pb-20 pt-36'>
+            <h1>NYT API</h1>
             <div>
                 <VanishInput 
                 placeholders={[
