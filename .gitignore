@@ -1,2 +1,7 @@
 node_modules
 venv/
+
+# Ignore build files
+.next/
+out/
+dist/

@@ -1,4 +1,4 @@
-// File: /Users/ryangomez/NYT-frontpage-API/app/api/page.tsx
+// File: /Users/ryangomez/Documents/GitHub/NYT-frontpage-API/app/api/page.tsx
 import * as entry from '../../../../app/api/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
