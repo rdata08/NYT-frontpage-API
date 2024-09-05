@@ -22,6 +22,6 @@ Windows:
 
 > `.\venv\Scripts\activate`
 
-6. Run `pip install -r requirements.txt` in the terminal to install the necessary libraries.
+6. Run `pip install -r backend/requirements.txt` in the terminal to install the necessary libraries.
 7. Run `npm run dev` or `npm start` to launch the project.
 8. Open your web browser and navigate to "localhost:3000".

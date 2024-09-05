@@ -2,13 +2,23 @@
 import React from 'react'
 import { VanishInput } from './ui/VanishInput'
 import { CodeBlock, dracula } from 'react-code-blocks';
+import { useState } from 'react';
 
 export default function ApiPage() {
-    const pass = () => {
+    const[inputValue, setInputValue] = useState('')
 
+    const handleChange = (event) => {
+       setInputValue(event.target.value);
     }
 
-    const code = `
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            const response = await fetch()
+        }
+    }
+
+    const response = `
     Hello!
     `;
 
@@ -22,13 +32,19 @@ export default function ApiPage() {
                         "Placeholder 2",
                         "Placeholder 3"
                     ]}
-                    onChange={pass}
-                    onSubmit={pass}
+                    onChange={handleChange}
+                    onSubmit={handleSubmit}
                 />
             </div>
-            <CodeBlock 
-            text = {code}
-            />
+            <div className='w-full h-screen'>
+                <CodeBlock
+                    text={response}
+                    language="json"
+                    showLineNumbers={false}
+                    theme={dracula}
+                    wrapLines={true}
+                />
+            </div>
         </div>
     )
 }
