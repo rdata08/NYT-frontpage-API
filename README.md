@@ -5,7 +5,8 @@ Data for the API will be scraped starting Sep 1, 2024 and all data for any day a
 
 This project was inspired by the importance of spreading reliable and trustworthy information on a global scale, while helping developers retrieve any information they deem useful for any purposes such as research, statistical analysis, etc.
 
-Backend - (Under Dev) Database Schema:
+Backend - (Under Dev)
+Database Schema:
 https://drawsql.app/teams/cornell-university/diagrams/nyt-api-database-schema
 <img width="1368" alt="Screenshot 2024-09-06 at 5 29 32 PM" src="https://github.com/user-attachments/assets/3298d5b9-1bb1-48ab-883d-23cbcde35f10">
 
