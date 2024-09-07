@@ -13,7 +13,7 @@
 This is an application programming interface (API) for the front page of the New York Times.
 Data for the API will be scraped starting Sep 1, 2024 and all data for any day after will be retrievable through the API. The next phase of the project will include collecting all data prior to Sep 1, 2024, possibly years of data for each front page of the NYT.
 
-## Purpopse
+## Purpose
 
 This project was inspired by the importance of spreading reliable and trustworthy information on a global scale, while helping developers retrieve any information they deem useful for any purposes such as research, statistical analysis, etc.
 
